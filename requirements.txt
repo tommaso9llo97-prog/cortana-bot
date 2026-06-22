@@ -11,3 +11,4 @@ google-generativeai
 arq
 redis
 hiredis
+psycopg2-binary>=2.9.0

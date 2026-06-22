@@ -6,7 +6,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 async def startup(ctx):
-    ctx['redis'] = await create_pool(settings.REDIS_URL)
+    # Sostituito settings.REDIS_URL con settings.redis_settings
+    ctx['redis'] = await create_pool(settings.redis_settings)
     logger.info("Worker avviato.")
 
 async def shutdown(ctx):

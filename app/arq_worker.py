@@ -1,4 +1,5 @@
 from arq import create_pool
+# Importiamo esplicitamente le funzioni dal file corretto
 from app.worker import process_telegram_message, process_macrodroid_event
 from app.config import settings
 import logging
@@ -6,7 +7,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 async def startup(ctx):
-    # Sostituito settings.REDIS_URL con settings.redis_settings
     ctx['redis'] = await create_pool(settings.redis_settings)
     logger.info("Worker avviato.")
 
@@ -14,6 +14,7 @@ async def shutdown(ctx):
     await ctx['redis'].close()
 
 class WorkerSettings:
+    # Ci assicuriamo che questa sia una LISTA di funzioni reali
     functions = [process_telegram_message, process_macrodroid_event]
     redis_settings = settings.redis_settings
     on_startup = startup

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncpg
+aiosqlite
+python-dotenv
+alembic
+pydantic-settings
+httpx
+google-generativeai
+arq
+redis
+hiredis

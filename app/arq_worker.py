@@ -14,7 +14,7 @@ async def shutdown(ctx):
 
 class WorkerSettings:
     functions = [process_telegram_message, process_macrodroid_event]
-    redis_settings = settings.REDIS_URL
+    redis_settings = settings.redis_settings
     on_startup = startup
     on_shutdown = shutdown
     max_jobs = 10

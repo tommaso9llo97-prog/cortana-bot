@@ -11,7 +11,7 @@ SYSTEM_INSTRUCTION = (
 async def get_gemini_response(user_id: int, user_text: str, redis=None) -> str:
     # Passiamo la stringa racchiusa in una lista pulita per evitare il TypeError dello 'type' object
     model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash-latest",
+        model_name="gemini-2.0-flash",
         system_instruction=[SYSTEM_INSTRUCTION]
     )
     

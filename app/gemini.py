@@ -11,9 +11,9 @@ SYSTEM_INSTRUCTION = (
 )
 
 async def get_gemini_response(user_id: int, user_text: str, redis=None) -> str:
-    # Utilizziamo il client moderno con gemini-1.5-flash che ha quote separate
+    # Usiamo il nome completo accettato universalmente dall'API v1beta
     response = client.models.generate_content(
-        model='gemini-1.5-flash',  # <--- CAMBIA SOLO QUESTO!
+        model='gemini-1.5-flash', 
         contents=user_text,
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION

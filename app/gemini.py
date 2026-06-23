@@ -2,7 +2,7 @@ from google import genai
 from google.genai import types
 from app.config import settings
 
-# Inizializzazione con il nuovo SDK ufficiale di Google
+# Inizializzazione ufficiale
 client = genai.Client(api_key=settings.GEMINI_API_KEY.get_secret_value())
 
 SYSTEM_INSTRUCTION = (
@@ -11,9 +11,9 @@ SYSTEM_INSTRUCTION = (
 )
 
 async def get_gemini_response(user_id: int, user_text: str, redis=None) -> str:
-    # Usiamo il nome completo accettato universalmente dall'API v1beta
+    # Usiamo il modello nativo del nuovo SDK per non avere problemi di puntamento
     response = client.models.generate_content(
-        model='gemini-1.5-flash', 
+        model='gemini-2.0-flash', 
         contents=user_text,
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION
